@@ -19,7 +19,7 @@ float (*MatrixSum)(int mNum) = 0;
 }MatFace;
 */
 
-//the machine the implements the above interface
+//This is a matrix machine posed as an interface.
 typedef struct{
 int (*initMachine)(int mdsz);
 int (*allocMatrix)(Matrix m);
@@ -31,6 +31,8 @@ int* cs;
 int* sid;
 float* matData;
 }MatMachine;
+
+extern MatMachine* createMatMach(int version); //restrict with #define VERSION
 
 //Here are some comments to explain the beginning of this code
 
