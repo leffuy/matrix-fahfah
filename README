@@ -1,4 +1,31 @@
 This is a user project for math using both GIT, Wolfram Alpha, and C to 
 produce basic matrix computations to solve a specific Hilbert Space problem.
 
-Hosted with Github.
+==Matrix with Pointer Basics==
+In memory a matrix is just a string of numbers of some size X.
+However for us as humans to perceive them we require them to have dimensions.
+
+So for Matrix size X,Y we'll have a string of numbers, X*Y long. For every Y
+numbers you have a single row. 
+
+In C you do this in the following.
+
+Without malloc use an array of static mem. 
+	
+	float fArray[9];
+
+Lets say it has size 3*3.
+
+To get row 2 and the 1 column we'll want element 4. Which is the 3 slot of
+memory (we start at 0). 
+
+	float* dataPtr = &fArray;
+	
+
+Anyhow you get the picture.
+
+Zipp your job is to get this README up to speed as we go.
+
+
+
+Hosted with Github. By Mitch and Stevie, and the Zipp who never shows.
