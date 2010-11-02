@@ -19,13 +19,19 @@ Lets say it has size 3*3.
 To get row 2 and the 1 column we'll want element 4. Which is the 3 slot of
 memory (we start at 0). 
 
-	float* dataPtr = &fArray;
+	float* fpointer = fArray;
+	//*(fpointer + 3) will get you slot 3. Use your pointer arithmetic.
 	
 
 Anyhow you get the picture.
 
-Zipp your job is to get this README up to speed as we go.
+==Using the Library==
 
+The Basics
+First you need to have matrix data, which you either build in your program, or 
+collect from a file. Either way this data needs to be in float form. This can
+be a tad annoying since sometimes floating point operations aren't as precise
+as we would like them to be. 
 
 
 Hosted with Github. By Mitch and Stevie, and the Zipp who never shows.

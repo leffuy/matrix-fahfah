@@ -10,7 +10,26 @@ int col;
 float* data;
 }Matrix;
 
+//Interface for basic matrix operations
+/*typedef struct{
+int (*allocMatrix)(Matrix m) = 0;
+int (*freeMatrix)(int mNum) = 0;
+float (*MatrixSum)(int mNum) = 0;
 
+}MatFace;
+*/
+
+//the machine the implements the above interface
+typedef struct{
+int mats;
+int* rs;
+int* cs;
+int* sid;
+float* matData;
+int (*allocMatrix)(Matrix m);
+int (*freeMatrix)(int mNum);
+Matrix (*getMatrix)(int mNum);`
+}MatMachine;
 
 //Here are some comments to explain the beginning of this code
 
@@ -36,6 +55,8 @@ for(i=0; i<row*col; i++){
 *(rdta + i) = (float)rand()/(float)RAND_MAX;
 }
 bigM.data = rdta;
+//After this you have a bigM that is "operational"
+
 
 printf("Element 4: %f \n", *((bigM.data)+3));
 printf("Free memory\n");
