@@ -14,6 +14,7 @@ int kino = a_mach->initMachine(800);
 srand(1342);
 //Establish the matrix
 Matrix bigM;
+Matrix lilM;
 //test variable; set to arbritary but static values
 int i = 0;
 int row = 3;
@@ -28,15 +29,21 @@ for(i=0; i<row*col; i++){
 }
 bigM.data = rdta;
 //After this you have a bigM that is "operational"
-//Ene Matrix Build
+//End Matrix Build
 
+//Test the machine
+printf("Matrix Machine status K-var: %d \n", kino);
+int idNum = a_mach->allocMatrix(bigM);
+printf("Alloced matrix ID is: %d \n", idNum);
+lilM = a_mach->getMatrix(idNum);
 
 //Test sandbox code
 //Here:
-printf("Matrix Machine status K-var: %d \n", kino);
-printf("Element 4: %f \n", *((bigM.data)+3));
+printf("Element 4 Real Mat: %f \n", *((bigM.data)+3));
+printf("Element 4 Virtual Mat: %f \n", *(lilM.data + 3));
 printf("Free memory\n");
 free(bigM.data);
+free(lilM.data);
 a_mach->releaseMachine();
 free(a_mach);
 printf("Memory freed\n");
