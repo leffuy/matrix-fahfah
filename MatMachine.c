@@ -6,7 +6,12 @@
 #include <math.h>
 #include <string.h>
 
+//Global handle to the machine interface after implementation use for self
+//reference
 MatMachine* g_mach;
+
+//This could be bundled into member variables but left as static and scoped
+//Into a static library like device when turned into MatMachine.o object code
 static float* megaMatrix; 
 static int* rs;
 static int* cs;
@@ -62,7 +67,7 @@ Matrix retr;
 retr.row = rs[mNum];
 retr.col = rs[mNum];
 retr.data = (float*)malloc(sizeof(float)*retr.row*retr.col);
-*(retr.data+3) = 22.32;
+
 for(i = 0; i < mNum; i++)
 mspt += rs[i]*cs[i];
 
