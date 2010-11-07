@@ -1,3 +1,5 @@
+//Implements a MatMachine.c for the CPU see MatMachine.cu for device code
+
 #define MAXMAT 4
 
 #include "Matrix.h"
@@ -6,13 +8,13 @@
 #include <math.h>
 #include <string.h>
 
+
 MatMachine* g_mach;
 static float* megaMatrix; 
 static int* rs;
 static int* cs;
 static int mcnt;
 static int memspt;
-
 
 
 //Init the machine resources
@@ -94,6 +96,7 @@ return C; //be sure to return
 }
 
 
+//Creates an instance of the machine to use and returns a handle
 MatMachine* createMatMach(int version){
 g_mach = (MatMachine*)malloc(sizeof(MatMachine));
 g_mach->initMachine = &initMachine;
