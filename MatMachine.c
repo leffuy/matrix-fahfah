@@ -94,7 +94,7 @@ for(i = 1; i <= size; i++){
 	}
 	memcpy((Hilbie.data + (i-1)*size),(Vector.data), sizeof(float)*(size));
 }
-
+free(Vector.data);
 return Hilbie;
 
 }
