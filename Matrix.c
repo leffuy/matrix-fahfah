@@ -13,6 +13,7 @@ int kino = a_mach->initMachine(800);
 //Example of how to setup the above matrix typedef.
 srand(1342);
 //Establish the matrix
+Matrix anM;
 Matrix bigM;
 Matrix lilM;
 //test variable; set to arbritary but static values
@@ -34,6 +35,7 @@ bigM.data = rdta;
 //Test the machine
 printf("Matrix Machine status K-var: %d \n", kino);
 int idNum = a_mach->allocMatrix(bigM);
+a_mach->allocMatrix(bigM);
 printf("Alloced matrix ID is: %d \n", idNum);
 lilM = a_mach->getMatrix(idNum);
 
@@ -41,9 +43,12 @@ lilM = a_mach->getMatrix(idNum);
 //Here:
 printf("Element 4 Real Mat: %f \n", *((bigM.data)+3));
 printf("Element 4 Virtual Mat: %f \n", *(lilM.data + 3));
+anM = a_mach->addMatrices(0,1);
+printf("Result of your addition: %f \n", *(anM.data + 3));
 printf("Free memory\n");
 free(bigM.data);
 free(lilM.data);
+free(anM.data);
 a_mach->releaseMachine();
 free(a_mach);
 printf("Memory freed\n");

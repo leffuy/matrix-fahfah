@@ -1,3 +1,5 @@
+//Implements a MatMachine.c for the CPU see MatMachine.cu for device code
+
 #define MAXMAT 4
 
 #include "Matrix.h"
@@ -6,8 +8,12 @@
 #include <math.h>
 #include <string.h>
 
+<<<<<<< HEAD
 //Global handle to the machine interface after implementation use for self
 //reference
+=======
+
+>>>>>>> 28e0dc49d45d9714b8df174e53e8353eea31ef68
 MatMachine* g_mach;
 
 //This could be bundled into member variables but left as static and scoped
@@ -17,7 +23,6 @@ static int* rs;
 static int* cs;
 static int mcnt;
 static int memspt;
-
 
 
 //Init the machine resources
@@ -67,7 +72,10 @@ Matrix retr;
 retr.row = rs[mNum];
 retr.col = rs[mNum];
 retr.data = (float*)malloc(sizeof(float)*retr.row*retr.col);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 28e0dc49d45d9714b8df174e53e8353eea31ef68
 for(i = 0; i < mNum; i++)
 mspt += rs[i]*cs[i];
 
@@ -76,12 +84,38 @@ memcpy((retr.data), (megaMatrix + mspt), sizeof(float)*(retr.row*retr.col));
 return retr;
 }
 
+Matrix addMatrices(int matID1, int matID2){
+int i;
+Matrix A;
+Matrix B;
+Matrix C;
+if(rs[matID1]*cs[matID1] != rs[matID2]*cs[matID2])
+	return C; //matrices aren't aligned correctly. addition not possible
+A = getMatrix(matID1);
+B = getMatrix(matID2);
+C.row = B.row;
+C.col = A.col;
+C.data = (float*)malloc(sizeof(float)*C.row*C.col);
+
+for(i = 0; i < A.row*B.col; i++){
+C.data[i] = A.data[i] + B.data[i];
+}
+
+free(A.data);
+free(B.data);
+
+return C; //be sure to return
+}
+
+
+//Creates an instance of the machine to use and returns a handle
 MatMachine* createMatMach(int version){
 g_mach = (MatMachine*)malloc(sizeof(MatMachine));
 g_mach->initMachine = &initMachine;
 g_mach->releaseMachine = &releaseMachine;
 g_mach->allocMatrix = &allocMatrix;
 g_mach->getMatrix = &getMatrix;
+g_mach->addMatrices = &addMatrices;
 return g_mach;
 }
 
