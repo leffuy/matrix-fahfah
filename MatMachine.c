@@ -8,12 +8,9 @@
 #include <math.h>
 #include <string.h>
 
-<<<<<<< HEAD
 //Global handle to the machine interface after implementation use for self
 //reference
-=======
 
->>>>>>> 28e0dc49d45d9714b8df174e53e8353eea31ef68
 MatMachine* g_mach;
 
 //This could be bundled into member variables but left as static and scoped
@@ -72,10 +69,7 @@ Matrix retr;
 retr.row = rs[mNum];
 retr.col = rs[mNum];
 retr.data = (float*)malloc(sizeof(float)*retr.row*retr.col);
-<<<<<<< HEAD
 
-=======
->>>>>>> 28e0dc49d45d9714b8df174e53e8353eea31ef68
 for(i = 0; i < mNum; i++)
 mspt += rs[i]*cs[i];
 
