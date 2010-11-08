@@ -78,6 +78,30 @@ memcpy((retr.data), (megaMatrix + mspt), sizeof(float)*(retr.row*retr.col));
 return retr;
 }
 
+Matrix getHilbertMat(int size){
+int i, j;
+Matrix Vector;
+Matrix Hilbie;
+Vector.row = size;
+Vector.col = 1;
+Hilbie.row = size;
+Hilbie.col = size;
+Hilbie.data = (float*)malloc(sizeof(float)*Hilbie.row*Hilbie.col);
+Vector.data = (float*)malloc(sizeof(float)*size);
+for(i = 1; i <= size; i++){
+	for(j = 1; j<=size; j++){
+		Vector.data[j-1] = 1.0f/((float)i + (float)j - 1.0f);
+	}
+	memcpy((Hilbie.data + (i-1)*size),(Vector.data), sizeof(float)*(size));
+}
+
+return Hilbie;
+
+}
+
+
+
+
 Matrix addMatrices(int matID1, int matID2){
 int i;
 Matrix A;
@@ -110,6 +134,7 @@ g_mach->releaseMachine = &releaseMachine;
 g_mach->allocMatrix = &allocMatrix;
 g_mach->getMatrix = &getMatrix;
 g_mach->addMatrices = &addMatrices;
+g_mach->getHilbertMat = &getHilbertMat;
 return g_mach;
 }
 

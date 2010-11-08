@@ -38,6 +38,7 @@ int (*allocMatrix)(Matrix m);
 int (*freeMatrix)(int mNum);
 Matrix (*getMatrix)(int mNum);
 Matrix (*addMatrices)(int matID1, int matID2);
+Matrix (*getHilbertMat) (int size);
 }MatMachine;
 
 //
